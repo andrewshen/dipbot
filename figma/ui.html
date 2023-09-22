@@ -1,0 +1,598 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+
+<div class="onboarding" id="onboarding">
+  <div class="iconContainer">
+    <img
+      src="https://i.imgur.com/wWve0wG.png"
+      width="60"
+      height="60"
+      alt="Icon"
+    />
+  </div>
+  <h2>DipBot</h2>
+  <p>To get started, enter your endpoint below.</p>
+  <div class="input-wrapper">
+    <input
+      type="text"
+      id="endpointInput"
+      placeholder="https://postman-echo.com"
+    />
+    <button id="setEndpoint" class="inputButton">Set endpoint</button>
+  </div>
+</div>
+
+<div class="container" id="main">
+  <label class="toggle-switch">
+    <input type="checkbox" id="public" checked />
+    <span class="toggle-switch-slider"></span>
+    <span class="icon-on"
+      ><svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_1_50)">
+          <path
+            d="M11.3334 14V12.6667C11.3334 11.9594 11.0524 11.2811 10.5523 10.781C10.0522 10.281 9.37393 10 8.66669 10H3.33335C2.62611 10 1.94783 10.281 1.44774 10.781C0.947639 11.2811 0.666687 11.9594 0.666687 12.6667V14"
+            stroke="#222222"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M5.99998 7.33333C7.47274 7.33333 8.66665 6.13943 8.66665 4.66667C8.66665 3.19391 7.47274 2 5.99998 2C4.52722 2 3.33331 3.19391 3.33331 4.66667C3.33331 6.13943 4.52722 7.33333 5.99998 7.33333Z"
+            stroke="#222222"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15.3333 14V12.6667C15.3329 12.0758 15.1362 11.5019 14.7742 11.0349C14.4122 10.5679 13.9054 10.2344 13.3333 10.0867"
+            stroke="#222222"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M10.6667 2.08667C11.2403 2.23354 11.7487 2.56714 12.1118 3.03488C12.4748 3.50262 12.6719 4.07789 12.6719 4.67C12.6719 5.26212 12.4748 5.83739 12.1118 6.30513C11.7487 6.77287 11.2403 7.10647 10.6667 7.25334"
+            stroke="#222222"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_1_50">
+            <rect width="16" height="16" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </span>
+    <span class="icon-off"
+      ><svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_1_55)">
+          <path
+            d="M7.99998 14.6667C11.6819 14.6667 14.6666 11.6819 14.6666 8.00001C14.6666 4.31811 11.6819 1.33334 7.99998 1.33334C4.31808 1.33334 1.33331 4.31811 1.33331 8.00001C1.33331 11.6819 4.31808 14.6667 7.99998 14.6667Z"
+            stroke="#222222"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M1.33331 8H14.6666"
+            stroke="#222222"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M7.99998 1.33334C9.6675 3.15891 10.6151 5.52803 10.6666 8.00001C10.6151 10.472 9.6675 12.8411 7.99998 14.6667C6.33246 12.8411 5.38481 10.472 5.33331 8.00001C5.38481 5.52803 6.33246 3.15891 7.99998 1.33334Z"
+            stroke="#222222"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_1_55">
+            <rect width="16" height="16" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </span>
+  </label>
+  <div class="previewContainer">
+    <img src="" id="preview" alt="preview" class="preview" />
+    <span id="emptyState">Select frames to upload</span>
+  </div>
+  <textarea
+    placeholder="Add a description (optional)"
+    id="description"
+  ></textarea>
+  <input placeholder="Figma URL (optional)" id="url" />
+  <button id="create">Post</button>
+</div>
+
+<style>
+  body {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    background: #f5f5f5;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  p {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    color: #777777;
+  }
+
+  #onboarding {
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  #emptyState {
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    position: absolute;
+    color: #777777;
+  }
+
+  .iconContainer {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 16px;
+  }
+
+  .iconContainer img {
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+  }
+
+  .previewContainer {
+    flex: 1;
+    position: relative;
+  }
+
+  .preview {
+    max-height: 100%;
+    max-width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    position: absolute;
+  }
+
+  .input-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  input {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    padding: 8px;
+    flex: 1;
+    border: none;
+    border-radius: 4px 0px 0px 4px;
+    /* border: 1px solid #dfdfdf; */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.04),
+      0px 4px 12px rgba(0, 0, 0, 0.02);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+
+  #onboarding input {
+    border-right: none;
+  }
+
+  #url {
+    max-height: 32px;
+    border-radius: 6px;
+  }
+
+  textarea {
+    height: 100px;
+    border-radius: 6px;
+    resize: none;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+    padding: 12px;
+    font-size: 12px;
+    line-height: 16px;
+    border: none;
+    /* border-color: #dfdfdf; */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.04),
+      0px 4px 12px rgba(0, 0, 0, 0.02);
+  }
+
+  input:focus,
+  textarea:focus {
+    /* border-color: #777777; */
+    outline: none;
+  }
+
+  .inputButton {
+    border-radius: 0px 4px 4px 0px;
+  }
+
+  button {
+    display: inline-block;
+    border: none;
+    padding: 9px 12px;
+    margin: 0;
+    text-decoration: none;
+    background: #2494f4;
+    color: #ffffff;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 150ms ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 6px;
+  }
+
+  button:disabled,
+  button[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #81c2f8;
+  }
+
+  button:hover,
+  button:focus {
+    background: #0b7ada;
+  }
+
+  button:focus {
+    outline: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h2 {
+      color: #ffffff;
+    }
+    body,
+    p {
+      background: #2c2c2c;
+      color: #a9a9a9;
+    }
+    #emptyState {
+      color: #868686;
+    }
+    textarea,
+    input {
+      background: #454545;
+      border-color: #555555;
+      color: #ffffff;
+    }
+    ::placeholder {
+      color: #a9a9a9;
+      opacity: 1; /* Firefox */
+    }
+  }
+
+  /* Toggle */
+
+  .toggle-switch {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 32px;
+  }
+  .toggle-switch input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .toggle-switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    border-radius: 24px;
+    transition: 0.15s;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.04),
+      0px 4px 12px rgba(0, 0, 0, 0.02);
+  }
+  .toggle-switch-slider:before {
+    content: "";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #ebebeb;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  input:checked + .toggle-switch-slider {
+    background-color: #ffffff;
+  }
+  input:checked + .toggle-switch-slider:before {
+    transform: translateX(28px);
+  }
+  .icon-on,
+  .icon-off {
+    top: 8px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+  }
+  .icon-on {
+    left: 8px;
+  }
+  .icon-off {
+    right: 8px;
+  }
+  input:checked ~ .icon-off {
+    opacity: 1;
+    z-index: 2;
+  }
+  input:checked ~ .icon-on {
+    opacity: 0.5;
+  }
+  input:not(:checked) ~ .icon-off {
+    opacity: 0.5;
+  }
+  input:not(:checked) ~ .icon-on {
+    opacity: 1;
+    z-index: 2;
+  }
+</style>
+
+<script>
+  let images = [];
+  let name = "";
+  let endpoint = "";
+
+  const textbox = document.getElementById("description");
+  const urlBar = document.getElementById("url");
+  const preview = document.getElementById("preview");
+  const emptyState = document.getElementById("emptyState");
+  const button = document.getElementById("create");
+  const endpointButton = document.getElementById("setEndpoint");
+  const endpointInput = document.getElementById("endpointInput");
+  const publicSwitch = document.getElementById("public");
+
+  const onboardingScreen = document.getElementById("onboarding");
+  const mainScreen = document.getElementById("main");
+
+  function isValidURL(string) {
+    let url;
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+    return url.protocol === "http:" || url.protocol === "https:";
+  }
+
+  function validateOnboarding(endpoint) {
+    if (isValidURL(endpoint)) {
+      onboardingScreen.style.display = "none";
+      mainScreen.style.display = "flex";
+    } else {
+      onboardingScreen.style.display = "flex";
+      endpointInput.focus();
+      mainScreen.style.display = "none";
+    }
+  }
+
+  parent.postMessage({ pluginMessage: { type: "getEndpoint" } }, "*");
+
+  endpointButton.onclick = () => {
+    parent.postMessage(
+      {
+        pluginMessage: {
+          type: "setEndpoint",
+          endpoint: endpointInput.value,
+        },
+      },
+      "*"
+    );
+  };
+
+  function createFramesText(frameCount) {
+    return frameCount === 0
+      ? ""
+      : frameCount > 1
+      ? `${frameCount} frames`
+      : `${frameCount} frame`;
+  }
+
+  button.onclick = () => {
+    button.disabled = true;
+    textbox.disabled = true;
+    urlBar.disabled = true;
+    publicSwitch.disabled = true;
+    (async () => {
+      await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          imageData: images,
+          name: name,
+          description: textbox.value,
+          url: urlBar.value,
+          public: publicSwitch.checked,
+        }),
+      });
+      textbox.value = ""; // clear textbox
+      urlBar.value = ""; // clear url bar
+      publicSwitch.disabled = false;
+      button.disabled = false;
+      textbox.disabled = false;
+      urlBar.disabled = false;
+      parent.postMessage({ pluginMessage: { type: "success" } }, "*");
+    })();
+  };
+
+  const base64abc = [
+    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+    "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+    "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "/",
+  ]; // prettier-ignore
+
+  const base64codes = [
+    255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255,
+    255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 62, 255,
+    255, 255, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 255, 255, 255, 0, 255,
+    255, 255, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+    19, 20, 21, 22, 23, 24, 25, 255, 255, 255, 255, 255, 255, 26, 27, 28, 29,
+    30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
+    49, 50, 51,
+  ];
+
+  function getBase64Code(charCode) {
+    if (charCode >= base64codes.length) {
+      throw new Error("Unable to parse base64 string.");
+    }
+    const code = base64codes[charCode];
+    if (code === 255) {
+      throw new Error("Unable to parse base64 string.");
+    }
+    return code;
+  }
+
+  function bytesToBase64(bytes) {
+    let result = "",
+      i,
+      l = bytes.length;
+    for (i = 2; i < l; i += 3) {
+      result += base64abc[bytes[i - 2] >> 2];
+      result += base64abc[((bytes[i - 2] & 0x03) << 4) | (bytes[i - 1] >> 4)];
+      result += base64abc[((bytes[i - 1] & 0x0f) << 2) | (bytes[i] >> 6)];
+      result += base64abc[bytes[i] & 0x3f];
+    }
+    if (i === l + 1) {
+      // 1 octet yet to write
+      result += base64abc[bytes[i - 2] >> 2];
+      result += base64abc[(bytes[i - 2] & 0x03) << 4];
+      result += "==";
+    }
+    if (i === l) {
+      // 2 octets yet to write
+      result += base64abc[bytes[i - 2] >> 2];
+      result += base64abc[((bytes[i - 2] & 0x03) << 4) | (bytes[i - 1] >> 4)];
+      result += base64abc[(bytes[i - 1] & 0x0f) << 2];
+      result += "=";
+    }
+    return result;
+  }
+
+  function base64ToBytes(str) {
+    if (str.length % 4 !== 0) {
+      throw new Error("Unable to parse base64 string.");
+    }
+    const index = str.indexOf("=");
+    if (index !== -1 && index < str.length - 2) {
+      throw new Error("Unable to parse base64 string.");
+    }
+    let missingOctets = str.endsWith("==") ? 2 : str.endsWith("=") ? 1 : 0,
+      n = str.length,
+      result = new Uint8Array(3 * (n / 4)),
+      buffer;
+    for (let i = 0, j = 0; i < n; i += 4, j += 3) {
+      buffer =
+        (getBase64Code(str.charCodeAt(i)) << 18) |
+        (getBase64Code(str.charCodeAt(i + 1)) << 12) |
+        (getBase64Code(str.charCodeAt(i + 2)) << 6) |
+        getBase64Code(str.charCodeAt(i + 3));
+      result[j] = buffer >> 16;
+      result[j + 1] = (buffer >> 8) & 0xff;
+      result[j + 2] = buffer & 0xff;
+    }
+    return result.subarray(0, result.length - missingOctets);
+  }
+
+  function base64encode(str, encoder = new TextEncoder()) {
+    return bytesToBase64(encoder.encode(str));
+  }
+
+  function base64decode(str, decoder = new TextDecoder()) {
+    return decoder.decode(base64ToBytes(str));
+  }
+
+  window.onmessage = async (event) => {
+    const { type } = event.data.pluginMessage;
+    if (type === "selectionUpdate") {
+      const bytes = event.data.pluginMessage.bytes;
+
+      if (bytes.length > 0) {
+        preview.style.display = "block";
+        emptyState.style.display = "none";
+        button.disabled = false;
+
+        images = bytes.map((byte) => bytesToBase64(byte));
+        name = event.data.pluginMessage.name;
+
+        const imageData = "data:image/png;base64," + bytesToBase64(bytes[0]);
+        preview.src = imageData;
+      } else {
+        // nothing selected
+        preview.style.display = "none";
+        emptyState.style.display = "block";
+        button.disabled = true;
+      }
+      button.innerText = `Post ${createFramesText(bytes.length)}`;
+    } else if (type === "endpointUpdate") {
+      endpoint = event.data.pluginMessage.endpoint;
+      validateOnboarding(endpoint);
+    }
+  };
+</script>

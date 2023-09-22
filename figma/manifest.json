@@ -1,0 +1,9 @@
+{
+  "name": "DipBot",
+  "id": "1155223260062889452",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma"],
+  "permissions": ["currentuser"],
+  "ui": "ui.html"
+}
